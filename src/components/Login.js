@@ -16,9 +16,16 @@ export default function Login() {
       user_type: "admin",
     },
     {
-      email: "jamsheedsaeed786@gmail.com",
+      email: "jamsheed@gmail.com",
       password: "Abcd@1234",
       user_type: "normal",
+      application: "app1",
+    },
+    {
+      email: "hassan@gmail.com",
+      password: "Abcd@1234",
+      user_type: "normal",
+      application: "app2",
     },
   ];
 
@@ -41,6 +48,12 @@ export default function Login() {
       if (matchemail[0]?.user_type === "admin") {
         return navigate("/admin-dashboard");
       } else if (matchemail[0]?.user_type === "normal") {
+        if (matchemail[0]?.application === "app1") {
+          return navigate("/application1");
+        }
+        if (matchemail[0]?.application === "app2") {
+          return navigate("/application2");
+        }
         return navigate("/user-dashboard");
       } else seterrormsg("Incorrect Email or Password");
     }

@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 
 export default function UserDashboard() {
-
   const [open, setOpen] = useState(false);
+  const [selectedFlavors, setSelectedFlavors] = useState([]);
+
+  const handleSelect = function (selectedItems) {
+    debugger;
+    const flavors = [];
+    for (let i = 0; i < selectedItems.length; i++) {
+      flavors.push([selectedItems[i].value]);
+    }
+    setSelectedFlavors(flavors);
+    console.log(flavors);
+  };
   return (
     <div className="flex">
       <div
@@ -34,7 +44,7 @@ export default function UserDashboard() {
             <ul className="pt-2 pb-4 space-y-1 text-sm">
               <li className="rounded-sm">
                 <a
-                href="/"
+                  href="/user-dashboard"
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
                   <svg
@@ -160,6 +170,24 @@ export default function UserDashboard() {
             <div className="mt-1 text-3xl font-semibold text-gray-900">
               User
             </div>
+            <select
+              name="languages"
+              value={selectedFlavors}
+              onChange={(e) => {
+                handleSelect(e.target.selectedOptions);
+              }}
+              id="lang"
+              multiple
+            >
+              <option value="javascript">JavaScript</option>
+              <option value="php">PHP</option>
+              <option value="java">Java</option>
+              <option value="golang">Golang</option>
+              <option value="python">Python</option>
+              <option value="c#">C#</option>
+              <option value="C++">C++</option>
+              <option value="erlang">Erlang</option>
+            </select>
           </div>
         </div>
       </div>
